@@ -12,7 +12,7 @@ const StyledHeadeer =  styled.header`
 function Header() {
     return (
         <StyledHeadeer>
-            <h1>Excercise Converter</h1>
+            <h1>Excercise Exchange</h1>
         </StyledHeadeer>
     )
 }

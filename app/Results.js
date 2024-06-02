@@ -13,11 +13,18 @@ const Result = styled.p`
   color: #0073e6;
 `;
 
+const Quote = styled.p`
+  font-size: 16px;
+  color: #555;
+  margin-top: 20px;
+`;
+
 function Results() {
     return (
         <ResultSection>
-            <h2>Equivalent Exercise</h2>
-            <Result>{"result"}</Result>
+            <h2>Excercise Exchange</h2>
+            <Result>A result</Result>
+            <Quote>A quote</Quote> {/* Display the fetched quote here */}
         </ResultSection>
     );
 }
