@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const ResultSection = styled.section`
@@ -20,13 +21,25 @@ const Quote = styled.p`
 `;
 
 function Results() {
-    return (
-        <ResultSection>
-            <h2>Excercise Exchange</h2>
-            <Result>A result</Result>
-            <Quote>A quote</Quote> {/* Display the fetched quote here */}
-        </ResultSection>
-    );
+  const [quote, setQuote] = useState("");
+
+  useEffect(() => {
+    fetch("/api/quotes")
+      .then(response => response.json())
+      .then(({ quote }) => setQuote(quote))
+      .catch((err) =>  {
+        console.log(err)
+        setQuote("No quote today.  Have fun!")
+    });
+  }, [setQuote])
+
+  return (
+      <ResultSection>
+          <h2>Excercise Exchange</h2>
+          <Result>A result</Result>
+          <Quote>{quote}</Quote>
+      </ResultSection>
+  );
 }
 
 export { Results };

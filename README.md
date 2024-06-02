@@ -2,7 +2,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First run the microservice dependecies:
+
+1. Quote Service [cs361microservice](https://github.com/ngotheodore/cs361microservice)
+    - From within the Quote Service directory run `python server.py`
+
+Then, run the development server:
 
 ```bash
 npm run dev
