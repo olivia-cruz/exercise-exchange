@@ -17,7 +17,7 @@ const HelpButton = () => {
             <ol type="1">
                 <li>Select the first exercise.</li>
                 <li>Select the exercise to compare.</li>
-                <li>Input the time duration in the format HH:mm.</li>
+                <li>Input the time duration as minutes.</li>
                 <li>Click "Convert" to see the equivalent exercise.</li>
             </ol>
             <CloseButton onClick={toggleTooltip}>Close</CloseButton>
@@ -92,4 +92,3 @@ const CloseButton = styled.button`
 `;
 
 export { HelpButton };
-// export default HelpButton;
