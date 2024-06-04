@@ -1,24 +1,20 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const DurationInput = ({ onDurationChange }) => {
-  const [duration, setDuration] = useState('');
+const DurationInput = ({ onDurationChange, duration }) => {
 
   const handleDurationChange = (e) => {
-    const value = e.target.value;
-    setDuration(value);
-    onDurationChange(value);
+    onDurationChange(e.target.value);
   };
 
   return (
     <StyledDiv>
-      <StyledLabel>Time Duration (HH:mm):</StyledLabel>
+      <StyledLabel>Time Duration (minutes):</StyledLabel>
       <StyledInput
-        type="time"
+        type="number"
         id="duration-input"
         value={duration}
         onChange={handleDurationChange}
-        step="60" // Step by minute
       />
     </StyledDiv>
   );

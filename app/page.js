@@ -1,6 +1,5 @@
 "use client";
 
-// import styles from "./page.module.css";
 import styled from "styled-components";
 import React, { useState } from "react";
 import { ConverterInput } from "./ConverterInput";
@@ -8,7 +7,6 @@ import { Header } from "./Header";
 import { Main } from "./Main";
 import { Results } from "./Results";
 import { HelpButton } from "./HelpButton";
-// import { StartOverButton } from "./StartOverButton";
 
 const StyledDiv = styled.div`
   font-family: Arial, sans-serif;
@@ -27,17 +25,10 @@ const HelpButtonWrapper = styled.div`
   margin-bottom: 10px;
 `;
 
-// const StartOverWrapper = styled.div`
-//   width: 100%;
-//   display: flex;
-//   justify-content: flex-start;
-//   margin-bottom: 10px;
-// `;
-
-
 const PrivacyMessage = styled.p`
   color: #353535;
   font-size: 14px;
+  margin-top: 10px;
 `;
 
 export default function Home() {
@@ -61,18 +52,3 @@ export default function Home() {
     </StyledDiv>
   );
 }
-
-// export default function Home() {
-//   return (
-//       <StyledDiv>
-//         <Header />
-//         <Main>
-//           <HelpButtonWrapper> <HelpButton /> </HelpButtonWrapper>
-//           <ConverterInput />
-//           <Results />
-//           {/* <StartOverButton /> */}
-//           <PrivacyMessage> "We will not share or sell your data. It is only used for generating equivalent exercises."</PrivacyMessage>
-//         </Main>
-//       </StyledDiv>
-//   );
-// }

@@ -5,7 +5,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First run the microservice dependecies:
 
 1. Quote Service [cs361microservice](https://github.com/ngotheodore/cs361microservice)
-    - From within the Quote Service directory run `python server.py`
+2. Exercise Store [exercise-store](https://github.com/olivia-cruz/exercise-store)
+3. Exercise Converter [exercise-converter](https://github.com/olivia-cruz/exercise-converter)
 
 Then, run the development server:
 

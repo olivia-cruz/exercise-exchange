@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { DurationInput } from "./DurationInput";
 
@@ -26,7 +26,7 @@ const StyledLabel = styled.label`
 `;
 
 const ConvertButton = styled.button`
-  width: 10%;
+  width: 15%;
   padding: 10px;
   border-radius: 5px;
   border: solid #353535;
@@ -34,6 +34,10 @@ const ConvertButton = styled.button`
   color: #ffffff;
   font-size: 18px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   &:hover {
@@ -42,16 +46,16 @@ const ConvertButton = styled.button`
 `;
 
 const ResetButton = styled.button`
-  width: 30%;
+  width: 15%;
   padding: 10px;
   border-radius: 5px;
   border: solid #353535;
   background-color: #f4d35e;
   color: #353535;
-  font-size: 10px;
+  font-size: 15px;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: center;
+  display: flex;
   align-items: center;
   margin-bottom: 10px;
   justify-content: center;
@@ -63,32 +67,48 @@ const ResetButton = styled.button`
 `;
 
 const ButtonRow = styled.div`
-  width: 50%;
+  width: 70%;
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
 `;
 
 const options = [
-    {value: "biking", label: "Biking"},
+    {value: "cycling", label: "Cycling"},
     {value: "running", label: "Running"},
-    {value: "swimming", label: "Swimming"}
+    {value: "swimming", label: "Swimming"},
+    {value: "walking", label: "Walking"}
 ];
 
 function ConverterInput({ updateResults }) {
-    const [firstExercise, setFirstExercise] = useState("biking");
-    const [comparisonExercise, setComparisonExercise] = useState("biking");
+    const [firstExercise, setFirstExercise] = useState("cycling");
+    const [comparisonExercise, setComparisonExercise] = useState("cycling");
     const [duration, setDuration] = useState("");
+    const [exercises, setExercises] = useState({});
+
+    useEffect(() => {
+      fetch("http://localhost:5001/exercises")
+        .then(response => response.json())
+        .then(data => setExercises(data));
+    }, [setExercises]);
   
-    const handleDurationChange = (e) => {
-      setDuration(e.target.value);
+    const handleDurationChange = (value) => {
+      setDuration(value);
     };
   
-    const convertExercise = () => {
-      if (firstExercise === "biking" && comparisonExercise === "swimming") {
-        updateResults(`Swimming for ${duration}`);
-      } else {
-        updateResults("Unknown exercise conversion");
+    const convertExercise = async () => {
+      const activity1Cph = exercises[firstExercise].calories_per_hour
+      const activity2Cph = exercises[comparisonExercise].calories_per_hour
+      try {
+      const response = await fetch(`http://localhost:5050/conversions?activity1_cph=${activity1Cph}&activity2_cph=${activity2Cph}&duration=${duration}`)
+      const conversion = await response.json();
+      const resultMessage = `
+        ${duration} minutes of ${firstExercise} burns ${conversion.activity1} calories.  
+        ${duration} minutes of ${comparisonExercise} burns ${conversion.activity2} calories. 
+      `
+      updateResults(resultMessage);
+      } catch (err) {
+        console.log(err);
       }
     };
   
@@ -131,11 +151,10 @@ function ConverterInput({ updateResults }) {
             </option>
           ))}
         </StyledSelect>
-        <DurationInput value={duration} onDurationChange={handleDurationChange} />
+        <DurationInput onDurationChange={handleDurationChange} duration={duration} />
 
-        {/* <DurationInput onDurationChange={(e) => setDuration(e)} /> */}
         <ButtonRow>
-          {/* <ConvertButton onClick={convertExercise}>Convert</ConvertButton> */}
+          <ConvertButton onClick={convertExercise}>Convert</ConvertButton>
           <ResetButton onClick={resetForm}>Click to Start Over</ResetButton>
         </ButtonRow>
       </StyledSection>

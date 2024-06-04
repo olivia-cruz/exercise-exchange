@@ -14,12 +14,12 @@ const HelpButton = () => {
       {visible && (
         <Tooltip>
             <h4>How to Use the Converter</h4>
-            <ul>
+            <ol type="1">
                 <li>Select the first exercise.</li>
                 <li>Select the exercise to compare.</li>
                 <li>Input the time duration in the format HH:mm.</li>
                 <li>Click "Convert" to see the equivalent exercise.</li>
-            </ul>
+            </ol>
             <CloseButton onClick={toggleTooltip}>Close</CloseButton>
         </Tooltip>
       )}
@@ -34,13 +34,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: left;
   justify-content: flex-end;
-`;
-
-const HelpButtonWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
 `;
 
 const Button = styled.button`
