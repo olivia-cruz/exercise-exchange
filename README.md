@@ -7,6 +7,7 @@ First run the microservice dependecies:
 1. Quote Service [cs361microservice](https://github.com/ngotheodore/cs361microservice)
 2. Exercise Store [exercise-store](https://github.com/olivia-cruz/exercise-store)
 3. Exercise Converter [exercise-converter](https://github.com/olivia-cruz/exercise-converter)
+4. Exercise Page Themes [exercise-themes](https://github.com/olivia-cruz/exercise-themes)
 
 Then, run the development server:
 
