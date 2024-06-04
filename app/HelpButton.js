@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 const HelpButton = () => {
@@ -40,14 +40,13 @@ const Button = styled.button`
   padding: 8px 16px;
   border: solid;
   border-radius: 4px;
-  background-color: #f4d35e;
+  background-color: ${({ theme }) => theme.secondary};
   color: #353535;
   cursor: pointer;
   font-size: 14px;
 
   &:hover {
-    background-color: #284b63;
-    color: #ffffff;
+    background-color: ${({ theme }) => theme.secondary_hover};
   }
 `;
 

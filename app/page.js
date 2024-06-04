@@ -7,10 +7,12 @@ import { Header } from "./Header";
 import { Main } from "./Main";
 import { Results } from "./Results";
 import { HelpButton } from "./HelpButton";
+import { ThemeSelector } from "./ThemeSelector";
+import { SelectTheme } from "./SelectTheme";
 
 const StyledDiv = styled.div`
   font-family: Arial, sans-serif;
-  background-color: #3c6e71;
+  background-color: ${({ theme }) => theme.page};
   margin: 0;
   padding: 0;
   display: flex;
@@ -39,16 +41,19 @@ export default function Home() {
   };
 
   return (
-    <StyledDiv>
-      <Header />
-      <Main>
-        <HelpButtonWrapper>
-          <HelpButton />
-        </HelpButtonWrapper>
-        <ConverterInput updateResults={updateResults} />
-        <Results result={result} />
-        <PrivacyMessage> "We will not share or sell your data. It is only used for generating equivalent exercises."</PrivacyMessage>
-      </Main>
-    </StyledDiv>
+    <ThemeSelector>
+      <StyledDiv>
+        <Header />
+        <Main>
+          <HelpButtonWrapper>
+            <HelpButton />
+            <SelectTheme />
+          </HelpButtonWrapper>
+          <ConverterInput updateResults={updateResults} />
+          <Results result={result} />
+          <PrivacyMessage> "We will not share or sell your data. It is only used for generating equivalent exercises."</PrivacyMessage>
+        </Main>
+      </StyledDiv>
+    </ThemeSelector>
   );
 }

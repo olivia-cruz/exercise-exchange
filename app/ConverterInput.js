@@ -30,7 +30,7 @@ const ConvertButton = styled.button`
   padding: 10px;
   border-radius: 5px;
   border: solid #353535;
-  background-color: #284b63;
+  background-color: ${({ theme }) => theme.primary};
   color: #ffffff;
   font-size: 18px;
   cursor: pointer;
@@ -41,7 +41,7 @@ const ConvertButton = styled.button`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: #3c6e71;
+    background-color: ${({ theme }) => theme.primary_hover};
     color: #ffffff;}
 `;
 
@@ -50,7 +50,7 @@ const ResetButton = styled.button`
   padding: 10px;
   border-radius: 5px;
   border: solid #353535;
-  background-color: #f4d35e;
+  background-color: ${({ theme }) => theme.secondary};
   color: #353535;
   font-size: 15px;
   cursor: pointer;
@@ -61,8 +61,7 @@ const ResetButton = styled.button`
   justify-content: center;
 
   &:hover {
-    background-color: #3c6e71;
-    color: #ffffff;
+    background-color: ${({ theme }) => theme.secondary_hover};
   }
 `;
 
@@ -162,38 +161,3 @@ function ConverterInput({ updateResults }) {
   }
   
   export { ConverterInput };
-
-// function ConverterInput() {
-//     return (
-//         <StyledSection>
-//             <StyledLabel htmlFor="exercise-input">Select the first exercise:</StyledLabel>
-//             <StyledSelect
-//             //   type="text"
-//             id="exercise-input"
-//             name="exercise-input"
-//             //   placeholder="e.g., Running 2 miles"
-//             defaultValue={"biking"}
-//             >
-//                 {options.map((option) => (
-//                     <option value={option.value}>{option.label}</option>
-//                 ))}
-//             </StyledSelect>
-//             <StyledLabel htmlFor="exercise-input">Select the exercise you want to compare:</StyledLabel>
-//             <StyledSelect
-//             //   type="text"
-//             id="exercise-input"
-//             name="exercise-input"
-//             //   placeholder="e.g., Running 2 miles"
-//             defaultValue={"biking"}
-//             >
-//                 {options.map((option) => (
-//                     <option value={option.value}>{option.label}</option>
-//                 ))}
-//             </StyledSelect>
-//             <DurationInput onDurationChange={(e) => { console.log(e) }}/>
-//             {/* <ConvertButton onClick={() => {}}>Convert</ConvertButton> */}
-//         </StyledSection>
-//     )
-// }
-
-// export { ConverterInput };

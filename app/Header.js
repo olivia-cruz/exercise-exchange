@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledHeadeer =  styled.header`
     width: 100%;
     font-family: Monaco, monospace;
-    background-color: #353535;
+    background-color: ${({ theme }) => theme.header};
     color: #ffffff;
     text-align: center;
     font-size: 30px; 
