@@ -19,7 +19,7 @@ const StyledSelect = styled.select`
 `
 
 function SelectTheme() {
-    const [selected, setSelected] = useState("normal");
+    const [selected, setSelected] = useState("");
     const [themes, setThemes] = useState(normal);
     const { handleThemeChange } = useContext(ThemeContext);
 
@@ -44,18 +44,16 @@ function SelectTheme() {
     }
 
     return (
-        <label>
-            Select Theme
         <StyledSelect
             value={selected}
             onChange={handleChange}
         >
+            <option value=""disabled hidden> Select a theme</option>
             <option value="normal">Normal</option>
             <option value="dark">Dark</option>
             <option value="warm">Warm</option>
             <option value="fun">Fun</option>
         </StyledSelect>
-        </label>
     );
 }
 

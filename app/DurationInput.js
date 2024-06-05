@@ -10,17 +10,19 @@ const DurationInput = ({ onDurationChange, duration }) => {
   return (
     <StyledDiv>
       <StyledLabel>Time Duration (minutes):</StyledLabel>
-      <StyledInput
-        type="number"
-        id="duration-input"
-        value={duration}
-        onChange={handleDurationChange}
-      />
+      <InputWrapper>
+        <StyledInput
+          type="number"
+          id="duration-input"
+          value={duration}
+          onChange={handleDurationChange}
+        />
+        <PlaceholderText>minutes</PlaceholderText>
+      </InputWrapper>
     </StyledDiv>
   );
 };
 
-// Styled Components
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -29,16 +31,32 @@ const StyledDiv = styled.div`
 `;
 
 const StyledLabel = styled.label`
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 10px;
 `;
 
-const StyledInput = styled.input`
+const InputWrapper = styled.div`
+  position: relative;
   width: 200px;
-  padding: 10px;
-  border-radius: 5px;
-  border: 3px solid #645554;
-  font-size: 16px;
+`;
+
+const StyledInput = styled.input`
+  width: 225px;
+  padding: 10px 10px 10px 40px;
+  border-radius: 50px;
+  border: 3px solid #284b63;
+  box-sizing: border-box;
+  font-size: 20px;
+`;
+
+const PlaceholderText = styled.span`
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #aaa;
+  pointer-events: none;
 `;
 
 export { DurationInput };

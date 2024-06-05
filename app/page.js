@@ -27,6 +27,13 @@ const HelpButtonWrapper = styled.div`
   margin-bottom: 10px;
 `;
 
+const ThemeButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+`;
+
 const PrivacyMessage = styled.p`
   color: #353535;
   font-size: 14px;
@@ -47,7 +54,9 @@ export default function Home() {
         <Main>
           <HelpButtonWrapper>
             <HelpButton />
-            <SelectTheme />
+          <ThemeButtonWrapper>
+          <SelectTheme />
+          </ThemeButtonWrapper>
           </HelpButtonWrapper>
           <ConverterInput updateResults={updateResults} />
           <Results result={result} />
